@@ -328,4 +328,169 @@ This completed the structure required for the annual results table. Each row now
 
 <img width="2092" height="1778" alt="Merged_Base+Results_Column_For_Outcome_Base" src="https://github.com/user-attachments/assets/4dec39e9-0a1a-4adc-93f3-312ea08690e7" />
 
-This step taught me that tables do not always need a single index number to be joined. A combination of fields can act as a composite key, provided that the fields describe the same level of detail in both tables. It also reinforced the importance of understanding what one row represents before deciding how two tables should be connected.
+This step reinforced the idea that tables do not always need a single index number to be joined. A combination of fields can act as a composite key, provided that the fields describe the same level of detail in both tables. It also reinforced the importance of understanding what one row represents before deciding how two tables should be connected.
+
+## Ordering the Employment Outcomes
+
+Power BI originally arranged the employment outcomes alphabetically. Although technically correct, this would not have presented the results in the most natural order for the dashboard.
+
+I wanted the outcomes to move logically from positive to negative, followed by responses that could not be classified:
+
+1. Increased
+
+2. Stable
+
+3. Decreased
+
+4. Unknown
+
+I created an `Outcome Sort` conditional column and assigned each outcome a number:
+
+```text
+Increased = 1
+Stable = 2
+Decreased = 3
+Unknown = 4
+Anything unexpected = 5
+```
+
+The final value of 5 ensured that any unexpected category would still appear at the end rather than creating a blank sort value.
+
+I could then use `Outcome Sort` to control the order of the employment outcome field in Power BI. Creating a reusable sort column was more reliable than manually arranging a single visual because the same order could be applied across charts, legends and slicers.
+
+This helped keep the dashboard consistent and reinforced how small modelling choices can make the results easier to follow.
+
+## Validating the Prepared Results
+
+I created a separate validation query because the same checks would need to be repeated across every business breakdown and survey year. Building a repeatable process reduced the risk of overlooking an incorrect row during a manual review.
+
+I grouped the results using:
+
+1. Year
+
+2. Measure
+
+3. Table Reference
+
+4. Breakdown Type
+
+5. Breakdown Value
+
+<img width="1632" height="1272" alt="Validation_Query_Groupby_Setup" src="https://github.com/user-attachments/assets/5c8fad6c-e685-4870-897c-fe5792d15b48" />
+
+Each resulting group represented one published business breakdown containing its possible employment outcomes.
+
+I created several summary checks for each group. The outcome count should normally equal four because the published table contained Increased, Stable, Decreased and Unknown.
+
+I also calculated the sum of the percentage values. The total should be approximately 1, representing 100 percent. I allowed a range between 0.98 and 1.02 because the published percentages were rounded and values marked `low` had been preserved as blank numeric values rather than incorrectly converted to zero.
+
+The same unweighted base should support all four outcomes belonging to a particular breakdown. I therefore calculated both its minimum and maximum value. If they were different, it would suggest that the merge had attached inconsistent bases to the outcome rows.
+
+I created a custom validation column that returned a specific review message when it found one of the following problems:
+
+1. The outcome count was not equal to four
+
+2. The unweighted base was missing
+
+3. The minimum and maximum unweighted bases did not match
+
+4. The percentage total was outside the accepted range
+
+If none of these conditions were found, the group returned `Pass`.
+
+```powerquery
+if [Count] <> 4 then "Review: Outcome count"
+else if [Minimum Unweighted Base] = null then "Review: missing base"
+else if [Minimum Unweighted Base] <> [Maximum Unweighted Base] then "Review: inconsistent base"
+else if [Percentage Sum] < 0.98 or [Percentage Sum] > 1.02 then "Review: percentage total"
+else "Pass"
+```
+
+### Manual Comparison with the Original Source
+
+I did not rely only on the automated validation query. These rules could confirm that the completed table was structurally consistent, but they could not prove that I had selected the correct source table or interpreted every published response correctly.
+
+I selected a sample of results from the completed 2021 query and compared them directly with Table 36 in the original Excel workbook. The checks included:
+
+1. UK employment increased
+
+2. UK employment stable
+
+3. UK unweighted base
+
+4. England employment increased
+
+5. Sector F unweighted base
+
+All five sampled values matched the original published table.
+
+This also tested whether I had interpreted the survey responses correctly. For example, the published response `Fewer (%)` described the number of employees the business had 12 months ago. I confirmed that this correctly appeared as `Increased` in my prepared results because the business had more employees at the time of the survey.
+
+<img width="1114" height="1450" alt="2021_Template_Validation_Manual" src="https://github.com/user-attachments/assets/19893e77-7e35-499f-9993-c509ec4710ff" />
+
+Creating these automated checks and completing a manual source comparison gave me greater confidence that the 2021 transformation could be reused as a template for 2022, 2023 and 2024.
+
+This process reinforced that automated validation and manual checking serve different purposes. The validation query efficiently identified structural problems across the complete dataset, while the manual comparison helped confirm that the source selection, value transformations and response interpretations were correct.
+
+## Repeating the Transformation for Each Survey Year
+
+Once the 2021 process had been prepared and validated, I reused it as the template for 2022, 2023 and 2024.
+
+I first imported each annual Excel workbook as its own source query. I then duplicated the 2021 staging query and renamed each copy for the relevant year.
+
+For every annual staging query, I reviewed and updated the steps that depended on the source year:
+
+1. The source workbook
+
+2. The filtered row containing the correct employment table
+
+3. The Survey Year value
+
+4. The Table Reference value
+
+The remaining transformation steps could be reused because they had been designed to produce the same final structure regardless of the source year.
+
+I then duplicated the 2021 Bases query and changed its source to the new annual staging query. This automatically applied the same filtering and pivoting process to the new year.
+
+I repeated the process for the Results query. I changed its source to the relevant annual staging query and updated its merge step so that it connected to the matching annual Bases query.
+
+Finally, I duplicated the validation query, connected it to the new annual Results query and checked for any rows marked for review. This helped confirm that each annual transformation had produced the expected outcome count, percentage totals and supporting bases.
+
+All four annual Results queries were prepared with the same column names, data types and level of detail. This consistency was necessary because the annual results would later be appended into one combined table.
+
+I disabled loading for the source, staging, base, validation and individual annual results queries. They still refreshed as part of the transformation process, but only the final combined table needed to be loaded into the Power BI model.
+
+<img width="3058" height="930" alt="Annual_Query_Template_Structure" src="https://github.com/user-attachments/assets/d1e53785-0eea-4da4-ab1e-31ca6da1ea81"/>
+
+This stage showed me the value of building and testing a clear template before scaling the process. Giving every Applied Step a meaningful name made it much easier to identify which parts needed updating for each year.
+
+It also made the project easier to extend. When a later survey release becomes available, I can reuse the same structure and add the new year after checking that its question wording and published table remain comparable.
+
+## Combining the Annual Results
+
+Once all four annual Results queries had been prepared and validated, I appended them into one combined table.
+
+An append was the correct operation because every annual query contained the same fields and level of detail. I wanted to place the rows from each year underneath one another while keeping the data in a long analytical format. A merge would have added more columns instead of extending the time period.
+
+I selected `Append Queries as New` and included the Results queries for 2021, 2022, 2023 and 2024. Creating a new query allowed the annual queries to remain as separate preparation stages while the combined query became the final table loaded into the Power BI model.
+
+Power Query matched the annual fields using their column names. This meant that the physical column order was less important, but the names needed to be standardised. A spelling difference would have created an additional column and left blank values in the other years.
+
+Each annual Results query contained 88 rows and 14 columns. The completed append therefore contained:
+
+```text
+88 rows × 4 years = 352 rows
+14 columns
+```
+
+I disabled loading for the four individual Results queries because their data was already included in the combined table. This prevented the model from storing unnecessary copies of the same information.
+
+The operation was similar to using `UNION ALL` in SQL because it combined rows from several compatible datasets without removing repeated values. One difference is that Power Query aligns appended fields using their column names, while SQL unions normally align selected fields by their position.
+
+After appending, I checked selected values from each year against the original Excel workbooks. I compared the UK total unweighted base and a sector unweighted base for each annual source. The sampled Power BI values matched the published values.
+
+<img width="1494" height="1268" alt="Append_Query_Validation_Manual" src="https://github.com/user-attachments/assets/819a246d-ad7e-4863-a5e5-c316c7dc62a7" />
+
+I also checked that each survey year was present and contributed the expected 88 rows. This gave me confidence that none of the annual queries had been excluded or appended more than once.
+
+This stage reinforced my existing understanding of SQL unions while showing me how the same principle is applied through Power Query. It also demonstrated why consistent schemas and source validation are important when combining repeated annual datasets.
