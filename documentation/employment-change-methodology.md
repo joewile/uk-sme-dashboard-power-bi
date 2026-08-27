@@ -53,9 +53,9 @@ How many employees did the business have on the payroll
 
 This identified Table 36, containing survey question B2. I then opened the nested table in the Data column, revealing the same published results shown in the original Excel workbook.
 
-<img width="3069" height="1090" alt="Wide_Format_Table_PowerBI" src="https://github.com/user-attachments/assets/ce652113-4adb-4d51-9a5e-bc8982a60b09" />
-
 The table was presented in a wide, publication friendly format, with survey responses in rows and the UK, Nation, Size and Sector breakdowns across separate columns.
+
+<img width="3069" height="1090" alt="Wide_Format_Table_PowerBI" src="https://github.com/user-attachments/assets/ce652113-4adb-4d51-9a5e-bc8982a60b09" />
 
 Steps I had taken in power query:
 
@@ -426,8 +426,6 @@ All five sampled values matched the original published table.
 
 This also tested whether I had interpreted the survey responses correctly. For example, the published response `Fewer (%)` described the number of employees the business had 12 months ago. I confirmed that this correctly appeared as `Increased` in my prepared results because the business had more employees at the time of the survey.
 
-<img width="1114" height="1450" alt="2021_Template_Validation_Manual" src="https://github.com/user-attachments/assets/19893e77-7e35-499f-9993-c509ec4710ff" />
-
 Creating these automated checks and completing a manual source comparison gave me greater confidence that the 2021 transformation could be reused as a template for 2022, 2023 and 2024.
 
 This process reinforced that automated validation and manual checking serve different purposes. The validation query efficiently identified structural problems across the complete dataset, while the manual comparison helped confirm that the source selection, value transformations and response interpretations were correct.
@@ -494,3 +492,235 @@ After appending, I checked selected values from each year against the original E
 I also checked that each survey year was present and contributed the expected 88 rows. This gave me confidence that none of the annual queries had been excluded or appended more than once.
 
 This stage reinforced my existing understanding of SQL unions while showing me how the same principle is applied through Power Query. It also demonstrated why consistent schemas and source validation are important when combining repeated annual datasets.
+
+## Translating Sector Codes into Readable Names
+
+The published tables used sector codes such as `ABDE`, `C`, `F` and `KL`. These codes kept the original table headings short, but they would have made the dashboard difficult to understand without referring to a separate explanation.
+
+I created a sector lookup table containing two fields:
+
+1. Sector Code
+
+2. Sector Name
+
+<img width="3070" height="1088" alt="image" src="https://github.com/user-attachments/assets/81633eda-af43-4b5e-8cd9-ec89b43a2da6" />
+
+Using a lookup table meant that the code definitions were stored in one place. This was more reusable than adding separate replacement rules to every query and will allow the same sector names to support other measures added later.
+
+I merged the lookup table with the combined Employment Change query by matching:
+
+<img width="1696" height="872" alt="image" src="https://github.com/user-attachments/assets/6c9404f9-1fba-4439-b1c0-ea930b04c5de" />
+
+```text
+Breakdown Value = Sector Code
+```
+
+I used a left outer join so that every row from the Employment Change table was preserved. Sector rows received a matching name, while UK Total, Nation and Size rows produced a blank `Sector Name` because their breakdown values were not sector codes. These blank matches were expected.
+
+The published code `KL` represented two combined sectors, so I gave it the readable name `Financial, insurance and real estate`.
+
+I then created a custom display column:
+
+```powerquery
+if [Sector Name] <> null then [Sector Name] & " Industry"
+else if [Breakdown Value] = "Total" then "UK Total"
+else [Breakdown Value]
+```
+
+This applied three display rules:
+
+1. Sector codes were replaced with their readable sector name followed by `Industry`
+
+2. The value `Total` was displayed as `UK Total`
+
+3. Nation and Size values kept their existing breakdown name
+
+The new display field allowed one slicer and the dynamic chart titles to show understandable labels such as `Construction Industry`, `England`, `Micro` and `UK Total`.
+
+This step reinforced my understanding of lookup tables, left outer joins and conditional display fields. It also showed how separating code definitions from the main results table makes a data preparation process easier to maintain and reuse.
+
+## Creating the Employment Change Trend Visual
+
+For the first visual, I wanted to show how the employment position reported by SME employers changed between 2021 and 2024.
+
+I wanted the dashboard to be understandable to people who may work with businesses or employment policy without having a strong data background. Someone close to me works with a local council and supports policies relating to small businesses and employment. This encouraged me to design the page so that users could investigate the part of the data most relevant to them and identify patterns worth exploring.
+
+I chose a line chart because it could show the direction of each employment outcome across the four survey years.
+
+The visual used:
+
+1. `Year` on the horizontal axis
+
+2. `Published Percentage` on the vertical axis
+
+3. `Employment Change Outcome` as the legend
+
+4. `Survey Base` and the table reference in the tooltip
+
+The legend created separate lines for Increased, Stable and Decreased. I removed Unknown because it provided little useful insight into the direction of employment change and would have added another line to the chart.
+
+### Published Percentage Measure
+
+The source contained percentages that had already been calculated and weighted by the survey publisher. Adding or averaging these percentages inside Power BI could have produced a misleading result.
+
+I created the following measure:
+
+```DAX
+Published Percentage =
+SELECTEDVALUE(
+    'EmploymentChange_2021-2024'[Percentage Value]
+)
+```
+
+`SELECTEDVALUE` returns the percentage only when the current visual context contains one distinct value. If the user selects several incompatible business breakdowns that produce multiple percentage values for the same chart point, the measure returns blank instead of combining them incorrectly.
+
+The chart can still display Increased, Stable and Decreased together because the legend gives each outcome its own filter context.
+
+### Survey Base Measure
+
+I used the same approach for the unweighted survey base:
+
+```DAX
+Survey Base =
+SELECTEDVALUE(
+    'EmploymentChange_2021-2024'[Unweighted Base]
+)
+```
+
+I added this measure to the tooltip so users could see how many businesses contributed to the selected result without placing extra information directly on the chart.
+
+### Interactive Business Breakdown
+
+I created a list slicer containing two levels:
+
+1. Breakdown Type
+
+2. Breakdown Value
+
+This allowed users to expand UK, Nation, Size or Sector and then select the particular group they wanted to investigate. The nested structure also made it clearer which type of business breakdown was currently being viewed.
+
+### Dynamic Chart Title
+
+I wanted the title to show users which business breakdown they were currently viewing. I created the following measure:
+
+```DAX
+Employment Change Line Chart Title =
+"Survey Responses: Reported Employment Change - "
+    & [Selected Breakdown Title]
+```
+
+The fixed text explains what the chart measures, while `[Selected Breakdown Title]` returns the readable name selected in the slicer.
+
+For example, selecting England changes the title to:
+
+```text
+Survey Responses: Reported Employment Change - England
+```
+
+Selecting Construction changes it to:
+
+```text
+Survey Responses: Reported Employment Change - Construction Industry
+```
+
+I applied the measure to the visual using the conditional formatting option for the chart title. As the slicer selection changes, the title updates automatically.
+
+This helps prevent users from forgetting which business group they are viewing and makes screenshots of the visual easier to understand without needing to see the slicer.
+
+The completed line chart made it easy to follow the separate trend of each reported employment outcome. However, it was still difficult to judge whether reported increases outweighed reported decreases in each year.
+
+The chart therefore worked well for exploring the individual responses, but it did not give an immediate summary of the overall direction. This limitation led me to create a second visual showing the net employment balance.
+
+## Creating the Net Employment Balance
+
+The line chart showed the separate Increased, Stable and Decreased trends, but users still had to compare the Increased and Decreased lines mentally to understand which one outweighed the other.
+
+I created separate measures for the Increased and Decreased outcomes.
+
+```DAX
+Increased Employment % =
+CALCULATE(
+    [Published Percentage],
+    'EmploymentChange_2021-2024'[Employment Change Outcome] = "Increased"
+)
+```
+
+```DAX
+Decreased Employment % =
+CALCULATE(
+    [Published Percentage],
+    'EmploymentChange_2021-2024'[Employment Change Outcome] = "Decreased"
+)
+```
+
+`CALCULATE` evaluates `[Published Percentage]` within a modified filter context. The Increased measure filters the outcome field to Increased, while the Decreased measure filters it to Decreased.
+
+The existing context from the survey year and selected business breakdown remains active. This means the measures return the relevant Increased and Decreased percentages for each year and selected nation, size or sector.
+
+I then subtracted the Decreased percentage from the Increased percentage:
+
+```DAX
+Net Employment Balance pp =
+(
+    [Increased Employment %]
+    - [Decreased Employment %]
+) * 100
+```
+
+The result was multiplied by 100 so it could be displayed as percentage points rather than as a decimal. I applied the following custom format:
+
+```text
+0.0 "pp";-0.0 "pp";0.0 "pp"
+```
+
+<img width="3038" height="1188" alt="Column_Chart_Net_Measire_PP_Format" src="https://github.com/user-attachments/assets/319c1ad1-9087-4cd3-b716-599753045bdd" />
+
+For example, if 34 percent of businesses reported increased employment and 19 percent reported decreased employment, the balance would be:
+
+```text
+34% minus 19% = 15 percentage points
+```
+
+A positive result means that a greater share of businesses reported an increase than a decrease. A negative result means that a greater share reported a decrease. A result of zero means the two shares were equal.
+
+### Column Chart Design
+
+I chose a column chart because it made the positive and negative values easy to compare across the four survey years. It also gave users a quicker understanding of the overall direction than comparing two separate lines.
+
+I added a zero reference line to show the point where reported increases and decreases were equal. Columns above the line represented a positive balance, while columns below it represented a negative balance.
+
+### Dynamic Column Chart Title
+
+I created a dynamic title so that the chart clearly showed which business breakdown was being viewed:
+
+```DAX
+Employment Change Column Chart Title =
+"Survey Responses: Net Reported Employment Change - "
+    & [Selected Breakdown Title]
+```
+
+The measure combines a fixed description with the readable breakdown selected in the slicer. This helps users understand the context of the result and makes exported screenshots easier to interpret.
+
+### Interpretation and Limitations
+
+The measure is a balance of published survey responses. It is not the percentage growth of employment and does not show the number of jobs created or lost.
+
+A business that gained one employee and a business that gained one hundred employees would both be counted as reporting an increase. The measure captures the direction reported by businesses, not the size of each employment change.
+
+The chart also cannot explain why the balance changed. It can highlight a sector or group that moved from a positive to a negative position, but further evidence would be required to investigate the cause.
+
+Changing the display unit to percentage points and including the word `Reported` in the title reduced the risk of users interpreting the result as a measured employment growth rate.
+
+## Employment Change Section Outcome
+
+This section turned four separate years of published survey tables into one reusable dataset covering employment outcomes across UK Total, nations, business sizes and sectors.
+
+The line chart allows users to explore the individual Increased, Stable and Decreased trends, while the Net Employment Balance provides a quicker summary of whether reported employment conditions were more positive or negative in each year.
+
+The interactive breakdown also made it possible to uncover patterns that could be difficult to notice in the published reports. For example, the Administrative and Support sector moved from a positive net balance of 19 percentage points in 2021 to a negative balance of 7 percentage points in 2024. The dashboard cannot explain why this happened, but it makes the pattern visible and provides a starting point for further research.
+
+Completing this section strengthened my understanding of Power Query transformations, lookup tables, validation queries, DAX filter context and visual design. It also helped me apply my previous SQL knowledge to aggregated survey data, which required a different approach from the row level datasets I had worked with before.
+
+The results must still be interpreted carefully. The dashboard uses weighted percentages from published aggregated tables rather than respondent level data. The Net Employment Balance does not measure the number of jobs created or lost, and differences between groups should not automatically be treated as statistically significant.
+
+Overall, this section created a repeatable process that can support additional survey measures and future annual releases. It also established the design approach for the remaining dashboard pages covering business challenges and growth outlook.
