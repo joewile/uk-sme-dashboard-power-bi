@@ -728,3 +728,5 @@ Completing this section strengthened my understanding of Power Query transformat
 The results must still be interpreted carefully. The dashboard uses weighted percentages from published aggregated tables rather than respondent level data. The Net Employment Balance does not measure the number of jobs created or lost, and differences between groups should not automatically be treated as statistically significant.
 
 Overall, this section created a repeatable process that can support additional survey measures and future annual releases. It also established the design approach for the remaining dashboard pages covering business challenges and growth outlook.
+
+* Note this is a design mockup
