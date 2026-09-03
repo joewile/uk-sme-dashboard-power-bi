@@ -47,10 +47,25 @@ I then create DAX measures and working visuals to test that the filters, calcula
 
 The current report pages are functional mock-ups rather than finished designs. I decided to complete the data preparation and prototype visuals for all planned measures before applying the final formatting, navigation and page layout. This should make it easier to design the report consistently rather than repeatedly reformatting individual pages while the project is still changing.
 
-<img width="1632" height="916" alt="Major_Obstacles_Comparison_Finial_draft" src="https://github.com/user-attachments/assets/77935989-9e4d-4966-8544-a0b7831f5a00" />
+## Dashboard pages currently in development
+
+The following pages are working mock-ups. I am currently using them to test the measures, filtering and overall user journey. The final formatting and navigation will be completed after the remaining measures have been added.
+
+### Major obstacle rankings and trends
 <img width="1880" height="1056" alt="image" src="https://github.com/user-attachments/assets/ed455977-4c97-4155-a228-be4ddb9bd6ce" />
-<img width="1858" height="1032" alt="Screenshot 2026-09-04 000700" src="https://github.com/user-attachments/assets/2583fdbf-74e3-492b-a44a-86032db5a6f7" />
-<img width="1860" height="1056" alt="Screenshot 2026-09-04 000728" src="https://github.com/user-attachments/assets/284cb951-268c-4f14-a542-b1de44a6767e" />
+This page shows the highest reported obstacles for a selected business group and year. The user can also select one obstacle and follow how it has changed between 2021 and 2024. I wanted this page to provide a quick understanding of the main issues while still allowing someone to investigate a specific obstacle in more detail.
+
+### Compare business groups
+<img width="1632" height="916" alt="Major_Obstacles_Comparison_Finial_draft" src="https://github.com/user-attachments/assets/77935989-9e4d-4966-8544-a0b7831f5a00" />
+This page allows the user to select a year, obstacle and comparison type, then compare the results across nations, business sizes or sectors. It helps show which groups were more or less likely to report a particular issue, making it easier to understand how the experiences of small businesses can differ across the UK.
+
+### Employment Trends and Outlook
+<img width="1834" height="1042" alt="image" src="https://github.com/user-attachments/assets/602d41b3-1575-4471-99b0-c84d9a6a23de" />
+This overview separates reported employment change from expected employment change to avoid confusing recent experience with future outlook. The left side shows how businesses reported employment compared with 12 months earlier, while the right side shows what they expect over the next 12 months. It is intended for a more casual reader who wants a quick understanding of the employment trend and current business sentiment.
+
+### Reported Employment Change
+<img width="1850" height="1042" alt="image" src="https://github.com/user-attachments/assets/71fe96d2-e222-4e18-a372-f4b9847a87e2" />
+This page provides a deeper view of employment and employment outlook for a selected business group. It compares reported and expected employment balances while also showing the individual Increased, Stable and Decreased outcomes. This helps the user see how optimistic businesses were and compare that outlook with later reported results, although these remain survey responses rather than actual employment levels.
 
 ## Development progress
 
