@@ -71,8 +71,6 @@ Steps I had taken in power query:
 6. Filtered the named table list to Table 36.
 7. Opened the nested table from the Data column.
 
-**Skills reinforced:** parameterised data sources, reusable query design, query referencing and separating intermediate transformations from final model tables.
-
 ## Reshaping the Published Table
 
 The original table was difficult to use in Power BI because each UK, Nation, Size and Sector breakdown was stored in a separate column. This meant that England, Scotland, Micro businesses and every individual sector were all separate fields rather than values within one consistent Breakdown field.
@@ -104,8 +102,6 @@ The result contained one row for each combination of published response and busi
 This stage was quite new to me because my previous Power BI and SQL work had used data that was already organised into relational, row based structures. Here, more of the work involved understanding the source layout and reshaping it before I could begin modelling or creating measures. It reinforced that different datasets require different preparation approaches rather than one fixed process.
 
 <img width="3012" height="1278" alt="Unpivoted_Breakdown_Columns" src="https://github.com/user-attachments/assets/5439b547-4e04-4413-b99c-5dc5d4b44b59" />
-
-**Skills developed and reinforced:** unpivoting, wide to long transformation, adapting relational data thinking to aggregated statistical tables and preparing data for reusable filtering.
 
 ## Standardising the Business Breakdowns
 
@@ -168,8 +164,6 @@ The resulting structure was:
 
 This structure made filtering easier and created a reusable format that could be applied consistently across the other survey years and measures. The sector codes were translated into readable names later using a lookup table.
 
-**Skills developed and reinforced:** adding source metadata, text standardisation, delimiter-based splitting, designing filter-friendly categories and preparing repeatable multi-year transformations.
-
 ## Interpreting and Standardising the Published Responses
 
 The original response labels were not immediately clear enough to use in the dashboard because they only made sense when read alongside the full survey question.
@@ -207,8 +201,6 @@ The standardised labels were more suitable for charts, filtering and calculation
 I kept the original `Published Response` field alongside the new standardised field. This preserved traceability to the source, allowed me to verify that each response had been mapped correctly and made it easier to investigate errors later.
 
 This step reinforced the importance of understanding the wording and time direction of a survey question before presenting its results. A technically correct transformation could still produce a misleading dashboard if the meaning of its categories was interpreted incorrectly.
-
-**Skills developed and reinforced:** survey-question interpretation, conditional classification, category standardisation, completeness checking and maintaining data lineage.
 
 ## Preparing the Published Values for Analysis
 
