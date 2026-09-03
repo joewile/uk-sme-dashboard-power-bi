@@ -61,6 +61,7 @@ The current report pages are functional mock-ups rather than finished designs. I
 The detailed development logs contain the Power Query steps, validation evidence, DAX measures and screenshots produced while building each part of the dashboard:
 
 - [Employment Outcomes methodology](/documentation/employment-outcomes-methodology.md)
+- [Employment Expectations methodology](/documentation/employment-outlook-methodology.md)
 - [Major Obstacles methodology](/documentation/major-obstacles-methodology.md)
 
 The main README will remain a shorter overview of the project. The methodology documents provide a more detailed record for anyone interested in how the annual tables were prepared and how the Power BI measures and visuals were developed.
