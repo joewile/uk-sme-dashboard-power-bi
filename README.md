@@ -53,6 +53,7 @@ The current report pages are functional mock-ups rather than finished designs. I
 |---|---|
 | Reported Employment Outcomes | Data preparation, validation, measures and prototype visuals completed |
 | Major Obstacles | Data preparation, validation, measures and prototype visuals completed |
+| Reported Employment Expectations | Data preparation, validation, measures and prototype visuals completed |
 | Remaining survey measures | In development |
 | Final dashboard design and navigation | Planned after the measure prototypes are complete |
 
