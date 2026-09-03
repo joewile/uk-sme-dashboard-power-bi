@@ -47,17 +47,17 @@ I then create DAX measures and working visuals to test that the filters, calcula
 
 The current report pages are functional mock-ups rather than finished designs. I decided to complete the data preparation and prototype visuals for all planned measures before applying the final formatting, navigation and page layout. This should make it easier to design the report consistently rather than repeatedly reformatting individual pages while the project is still changing.
 
-<img width="1858" height="1032" alt="Screenshot 2026-09-04 000700" src="https://github.com/user-attachments/assets/2583fdbf-74e3-492b-a44a-86032db5a6f7" />
-<img width="1860" height="1056" alt="Screenshot 2026-09-04 000728" src="https://github.com/user-attachments/assets/284cb951-268c-4f14-a542-b1de44a6767e" />
 <img width="1632" height="916" alt="Major_Obstacles_Comparison_Finial_draft" src="https://github.com/user-attachments/assets/77935989-9e4d-4966-8544-a0b7831f5a00" />
 <img width="1880" height="1056" alt="image" src="https://github.com/user-attachments/assets/ed455977-4c97-4155-a228-be4ddb9bd6ce" />
+<img width="1858" height="1032" alt="Screenshot 2026-09-04 000700" src="https://github.com/user-attachments/assets/2583fdbf-74e3-492b-a44a-86032db5a6f7" />
+<img width="1860" height="1056" alt="Screenshot 2026-09-04 000728" src="https://github.com/user-attachments/assets/284cb951-268c-4f14-a542-b1de44a6767e" />
 
 ## Development progress
 
 | Area | Current status |
 |---|---|
+| Major Obstacles | Finial Draft Completed - Awaiting other measures drafts |
 | Reported Employment Outcomes | Data preparation, validation, measures and prototype visuals completed |
-| Major Obstacles | Data preparation, validation, measures and prototype visuals completed |
 | Reported Employment Expectations | Data preparation, validation, measures and prototype visuals completed |
 | Remaining survey measures | In development |
 | Final dashboard design and navigation | Planned after the measure prototypes are complete |
