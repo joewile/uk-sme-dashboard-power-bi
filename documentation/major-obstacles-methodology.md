@@ -1,4 +1,5 @@
 # Major Obstacles: Data Preparation and Prototype Visuals
+> **Development status:** The pages shown here are working mock-ups used to test the data, measures and interactions. Final formatting, navigation and tooltip warnings will be completed after the remaining dashboard measures have been prepared.
 
 ## Preview
 
