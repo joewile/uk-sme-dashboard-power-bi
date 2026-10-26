@@ -99,3 +99,8 @@ The second image shows how the same table appeared after importing the Excel wor
 
 <img width="3072" height="756" alt="02" src="https://github.com/user-attachments/assets/eae3f6f8-9ef9-40a4-bef0-21f70c96d2ee" />
 
+### Updating the Staging query
+<img width="2958" height="864" alt="01" src="https://github.com/user-attachments/assets/177e05eb-a72b-44a7-a133-c7a481248dbf" />
+<img width="3072" height="756" alt="02" src="https://github.com/user-attachments/assets/6b0ef078-8f9f-4af8-817c-03203c2ed36c" />
+
+First, I updated the duplicated Staging query’s name and source, then filtered for the Expected Turnover question. The existing `Expanded Nested Table` step could then expand the selected survey table.
