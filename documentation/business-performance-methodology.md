@@ -52,3 +52,15 @@ The bottom row uses two clustered bar charts, which act as support for the top r
 
 #### Interpreting the figures
 Finally, at the bottom, there is an explanation of how percentage-point balances are calculated. I wanted to make it clear that these figures do not represent actual turnover amounts but differences between survey response shares. This is also made clear on the Information page.
+
+The Employment Change survey measure was the first transformation I completed and set the structure for other measures to follow. It established the general structure:
+
+    Staging → Base → Results → Validation
+
+| Query layer | Steps Taken | Why it was useful |
+|---|---|---|
+| **Staging** | The Staging query first referenced the annual source table and filtered for the row containing the relevant survey question. It then expanded the nested table, removed unused columns and unpivoted the business-group columns, replacing the one-column-per-group layout with a long-format structure. The published attribute column was split by delimiter into `Breakdown Type` and `Breakdown Value`, which would later support the hierarchical slicer. I then added and standardised fields including `Survey Year`, `Measure Name`, `Table Reference`, `Row Type`, `Response Outcome`, `Is Low`, `Numeric Value` and `Percentage Value`. | Created a consistent long-format structure from the wide published tables, making the data easier to filter, validate and combine across survey years. |
+| **Base** | The purpose of this was to create a separate column for `Weighted Base` and `Unweighted Base`, doing this by separating the base rows from the percentage results. Then pivoting its own columns, making one base record for each year and business group. | Preserved the sample information behind each percentage and allowed the correct weighted and unweighted bases to be attached to every result. |
+| **Results** | The Results query layer referenced the Staging query, filtered for percentage rows, removed the base-related columns and merged with the Base query using a composite key. It then expanded the merged query, removed duplicates, standardised the employment outcome responses, ordered the columns and set the final data types. | Converted the transformed survey responses into a consistent, model-ready annual table containing the published percentages, standardised outcomes and supporting sample bases. |
+| **Validation** | Referenced the completed Results table and grouped the rows by the composite key columns, creating one validation record for each business group. It counted the outcomes, calculated the percentage sum, found the minimum and maximum unweighted bases, and added an `Error Validation` column. If any of the following checks failed, the record would not pass: outcome count = 4, minimum base = maximum base, and percentage total = 1.00 ± 0.02 to allow for rounding. | Provided an automated check that each business group contained the expected responses, consistent bases and a sensible percentage total before the data was used in the report. |
+
