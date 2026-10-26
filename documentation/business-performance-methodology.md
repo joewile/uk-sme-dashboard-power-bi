@@ -83,4 +83,19 @@ The structural steps generally remained unchanged. These included expanding the 
 
 Reusing these steps saved time while maintaining a consistent structure across the measures. Once the required updates had been made, I checked selected values against the original Excel tables and confirmed that each annual Validation query passed before appending the Results queries.
 
+## Worked example – Expected Turnover
+
+### Why Expected Turnover was selected
+
+Expected Turnover was the final survey measure. It had the clearest set of screenshots demonstrating how I duplicated the query layers from other completed and verified survey measures and updated the Applied Steps accordingly.
+
+### Source question and original format
+
+The first image shows the downloadable 2021 source file and its original layout. The workbook was semi-structured because several survey tables were stacked within the same worksheet. The Expected Turnover question, Table 137, was also presented in a wide format, with the survey responses stored in rows and each UK, nation, business-size and sector group stored in a separate column.
+
+<img width="2958" height="864" alt="01" src="https://github.com/user-attachments/assets/f53e22a5-2f15-4ad9-b9ae-60ce821c29f4" />
+
+The second image shows how the same table appeared after importing the Excel workbook into Power Query, filtering for the Expected Turnover question and expanding the nested table.
+
+<img width="3072" height="756" alt="02" src="https://github.com/user-attachments/assets/eae3f6f8-9ef9-40a4-bef0-21f70c96d2ee" />
 
