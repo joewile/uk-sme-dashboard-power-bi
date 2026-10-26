@@ -131,6 +131,14 @@ First, I updated the query name and its Source reference to the Expected Turnove
 
 I then reviewed each Applied Step that referenced the renamed Expected Turnover outcome column, including the outcome sort, data types, column reordering and removed columns.
 
+### Repeating the steps for 2022, 2023 and 2024
+
+<img width="3072" height="686" alt="15_Duplicated_2021_Prep" src="https://github.com/user-attachments/assets/2e590d0b-7f7d-4391-96f3-a1403cab77dc" />
+
+After comparing the 2021 Excel results with the Power BI table and confirming that there were no inconsistencies, I repeated the process for the remaining years. I duplicated the completed 2021 Expected Turnover queries, which reduced the number of changes required.
+
+For each year, I updated the annual source, survey table reference, year and dependent query references. I then compared selected values with the corresponding Excel table and confirmed that the Validation query passed before moving on to the next year.
+
 ### Updating the duplicated Validation query
 
 <img width="3072" height="526" alt="14_Updated_Validation_Source" src="https://github.com/user-attachments/assets/8d30ff07-d787-47cc-a037-031b7ed5217a" />
