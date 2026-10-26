@@ -1,5 +1,6 @@
 ## Overview of this document
 This document is split into two main sections. The first showcases the features of the two Business Performance pages and explains how each page is intended to be read, with the aim of helping the user understand the data provided in the Small Business Survey reports through a visual format. The second explains the technical methodology involved in transforming the semi-structured, wide-format data corresponding to each survey question into appended survey measure tables.
+
 The methodology section will be kept shorter because the full transformation process is already documented in the Employment Change Methodology, which acts as the parent structure for the measures used in Business Performance. This is because most of the survey questions, other than the measures used for the Major Obstacles pages, followed a similar table structure, even when the question wording and response categories differed.
 I will use Expected Turnover as the worked example for the three measures, demonstrating the data transformation process and how I reused the query structure from another measure before updating the relevant Applied Steps.
 ## Business Performance Design
