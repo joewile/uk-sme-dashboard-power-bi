@@ -104,3 +104,10 @@ The second image shows how the same table appeared after importing the Excel wor
 <img width="3072" height="756" alt="02" src="https://github.com/user-attachments/assets/6b0ef078-8f9f-4af8-817c-03203c2ed36c" />
 
 First, I updated the duplicated Staging query’s name and source, then filtered for the Expected Turnover question. The existing `Expanded Nested Table` step could then expand the selected survey table.
+<img width="3072" height="300" alt="6_Updated_Staging_d_outcome" src="https://github.com/user-attachments/assets/eece1f3f-990b-4ee1-9196-0ab3eb03685f" />
+After this, I updated the measure-specific fields: Measure, Year and Table Reference.
+<img width="3072" height="1196" alt="16_Updated_2024_Condiatonal_Column_For_Published_Respone_Change" src="https://github.com/user-attachments/assets/d5529309-b6a6-42df-bc17-0b2960118713" />
+I then updated the outcome-mapping conditional column to account for minor differences in the published response wording and map the responses to the standardised outcomes.
+<img width="3028" height="1264" alt="7_Updated_Staging_e_final" src="https://github.com/user-attachments/assets/f321e995-8675-45c3-8664-5f98672f69f2" />
+Finally, I updated the data-type and column-reordering steps so that they referenced the renamed Expected Turnover outcome column.
+
