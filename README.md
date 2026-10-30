@@ -30,7 +30,7 @@ One frustration I heard a lot was that they felt nothing was ever done with the 
 
 As my first portfolio project, it made sense to choose this subject, not only because I have direct experience collecting data for the survey, but also because the published data is presented in a more challenging format. It is pre aggregated, weighted and presented in a semi structured, wide format, so it would put me to the test and help me learn more skills.
 
-I chose the 2021 to 2024 data since the results were presented in a similar format, making the process repeatable. Completing this project allowed me to put what I had been learning through Power BI courses into something real, demonstrating my capability and willingness to learn and adapt.
+I chose the 2021 to 2024 data since the results were presented in a similar format, making the process repeatable. In addition, the 2025 results had not been relased as of yet. Completing this project allowed me to put what I had been learning through Power BI courses into something real, demonstrating my capability and willingness to learn and adapt.
 
 ## What this project demonstrates
 
@@ -46,13 +46,14 @@ I chose the 2021 to 2024 data since the results were presented in a similar form
 
 ## What users can explore
 
-- Follow changes in business performance, employment and major obstacles between 2021 and 2024.
-- Move from the UK total to individual nations, business sizes or sectors using a shared hierarchical selector.
-- Separate what businesses reported over the previous 12 months from what they expected over the following 12 months.
-- View the response shares behind percentage point balances rather than relying only on headline KPIs.
-- Rank the obstacles reported by a selected business group and follow an individual obstacle over time.
-- Compare how nations, business sizes or sectors responded to the same survey question.
-
+- Explore survey responses across the four years and understand the trends and changes in three areas: business performance, employment and major obstacles.
+- Use hierarchical slicers to filter the results from the UK total down to individual nations, business sectors or business sizes.
+- Separate future expectations from reported outcomes, highlighting where expectations were more positive across business groups in the Employment and Business Performance sections.
+- Use percentage point calculations to quickly identify whether increases or decreases outweigh one another and how the gap between the two changed over time.
+- Explore the ranking of reported major obstacles for your selected business group and year.
+- Track a specific major obstacle and follow how its reported percentage changed over time.
+- Track the reported percentage of a specific major obstacle over time and compare it across nations, business sizes or sectors.
+  
 ## Dashboard pages
 
 ### Business performance
