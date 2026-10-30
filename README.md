@@ -1,88 +1,146 @@
-# SME Insights Power BI Dashboard
+# SME Insights - Power BI Dashboard
 
-> **Status:** Currently in development
+An independent Power BI portfolio project combining my experience collecting Small Business Survey data with the transformation and visualisation of published survey findings.
 
-## Why I started this project
+![Business Performance overview showing reported turnover, expected turnover and profitability](documentation/images/dashboard-pages/business-performance-overview.png)
 
-This project grew from my experience of working on data collection and speaking directly with small businesses. During those conversations, I became interested in whether the issues businesses discussed could also be seen in the published survey data.
+## Contents
 
-Major Obstacles was the subject that received the most attention when I spoke with business owners. They wanted people to understand the problems they were currently facing and felt that these issues needed to be better represented. This made the data feel more personal and meaningful because it records what businesses themselves believe their main challenges are.
+- [Why I built this project](#why-i-built-this-project)
+- [What this project demonstrates](#what-this-project-demonstrates)
+- [What users can explore](#what-users-can-explore)
+- [Dashboard pages](#dashboard-pages)
+  - [Business performance](#business-performance)
+  - [Employment](#employment)
+  - [Major obstacles](#major-obstacles)
+  - [About this survey](#about-this-survey)
+- [Data preparation and validation](#data-preparation-and-validation)
+- [Data interpretation](#data-interpretation)
+- [Tools used](#tools-used)
+- [Methodology and project evidence](#methodology-and-project-evidence)
+- [Data source](#data-source)
 
-My interest in employment data was also influenced by someone close to me who works with a local council and supports work relating to small businesses and employment. This encouraged me to think about how the dashboard could be useful to people working with businesses or local policy who may need understandable findings without having time to search through several large statistical reports.
+## Why I built this project
 
-## Project aim
+During this project, I have worked in data collection for Fieldlocker alongside BMG Research, primarily on the UK Government’s Small Business Survey. I worked on the 2025 survey and am now working on the 2026 survey.
 
-The UK Longitudinal Small Business Survey contains detailed information, but its results are spread across separate annual Excel workbooks containing many statistical tables. Finding the same question in different years and comparing a particular nation, business size or sector can take time.
+My job is to speak with senior business leaders and persuade them to volunteer their time to go through the survey with me. I ask them the survey questions and probe their responses to help ensure the data is correct and of high quality, while keeping it interesting and, once in a while, being patient while I hear about the frustrations they are having.
 
-I wanted to turn these published tables into an interactive Power BI dashboard that supports two levels of use.
+One frustration I heard a lot was that they felt nothing was ever done with the data. This is not exactly true, but it is understandable given the focus on large corporations in the UK. These comments and my natural curiosity made me want to find a way to present the published data to those interested in a more digestible format.
 
-The first is a quick overview for someone who wants to understand the main findings and the latest position included in the dashboard. The second is a deeper investigative view where users can select particular nations, business sizes or sectors, follow changes over time and compare how different groups responded.
+As my first portfolio project, it made sense to choose this subject, not only because I have direct experience collecting data for the survey, but also because the published data is presented in a more challenging format. It is pre aggregated, weighted and presented in a semi structured, wide format, so it would put me to the test and help me learn more skills.
 
-One of the main aims is to make trends easier to identify. The dashboard cannot explain why a change happened, but it can highlight a group or result that may be worth investigating further.
+I chose the 2021 to 2024 data because the results were presented in the most similar format, making the process repeatable. This project allowed me to put what I had been learning through Power BI courses into something real, demonstrating my capability and willingness to learn and adapt.
 
-## Project scope
+## What this project demonstrates
 
-The first stage of the project uses published results from 2021 to 2024 for SME employers with between 1 and 249 employees. I selected these years because their tables were sufficiently compatible to create a consistent initial dataset. Earlier years may be added after the main dashboard structure is complete.
-
-The planned report will cover:
-
-- Reported and expected employment change
-- Business performance
-- Growth and business capability
-- Finance and business support
-- Major obstacles reported by businesses
-- Comparisons between UK nations, business sizes and sectors
-- Changes across the 2021–2024 survey period
-- Survey-base information and warnings for results supported by small respondent numbers
-
-The dashboard uses published aggregated survey results rather than respondent-level records. It retains the published percentages alongside the weighted and unweighted survey bases.
-
-These figures show what the participating businesses reported. They should not be treated as exact measurements of the full SME population or as proof of what caused a particular result.
-
-## Current development
-
-I am developing the dashboard one survey measure at a time. For each measure, I locate the comparable annual tables, prepare them in Power Query, validate selected results against the original Excel files and append the years into one consistent dataset.
-
-I then create DAX measures and working visuals to test that the filters, calculations and interactions behave correctly.
-
-The current report pages are functional mock-ups rather than finished designs. I decided to complete the data preparation and prototype visuals for all planned measures before applying the final formatting, navigation and page layout. This should make it easier to design the report consistently rather than repeatedly reformatting individual pages while the project is still changing.
-
-## Dashboard pages currently in development
-
-The following pages are working mock-ups. I am currently using them to test the measures, filtering and overall user journey. The final formatting and navigation will be completed after the remaining measures have been added.
-
-### Major obstacle rankings and trends
-<img width="1880" height="1056" alt="image" src="https://github.com/user-attachments/assets/ed455977-4c97-4155-a228-be4ddb9bd6ce" />
-This page shows the highest reported obstacles for a selected business group and year. The user can also select one obstacle and follow how it has changed between 2021 and 2024. I wanted this page to provide a quick understanding of the main issues while still allowing someone to investigate a specific obstacle in more detail.
-
-### Compare business groups
-<img width="1632" height="916" alt="Major_Obstacles_Comparison_Finial_draft" src="https://github.com/user-attachments/assets/77935989-9e4d-4966-8544-a0b7831f5a00" />
-This page allows the user to select a year, obstacle and comparison type, then compare the results across nations, business sizes or sectors. It helps show which groups were more or less likely to report a particular issue, making it easier to understand how the experiences of small businesses can differ across the UK.
-
-### Employment Trends and Outlook
-<img width="1834" height="1042" alt="image" src="https://github.com/user-attachments/assets/602d41b3-1575-4471-99b0-c84d9a6a23de" />
-This overview separates reported employment change from expected employment change to avoid confusing recent experience with future outlook. The left side shows how businesses reported employment compared with 12 months earlier, while the right side shows what they expect over the next 12 months. It is intended for a more casual reader who wants a quick understanding of the employment trend and current business sentiment.
-
-### Reported Employment Change
-<img width="1850" height="1042" alt="image" src="https://github.com/user-attachments/assets/71fe96d2-e222-4e18-a372-f4b9847a87e2" />
-This page provides a deeper view of employment and employment outlook for a selected business group. It compares reported and expected employment balances while also showing the individual Increased, Stable and Decreased outcomes. This helps the user see how optimistic businesses were and compare that outlook with later reported results, although these remain survey responses rather than actual employment levels.
-
-## Development progress
-
-| Area | Current status |
+| Area | Evidence in the project |
 |---|---|
-| Major Obstacles | Finial Draft Completed - Awaiting other measures drafts |
-| Reported Employment Outcomes | Data preparation, validation, measures and prototype visuals completed |
-| Reported Employment Expectations | Data preparation, validation, measures and prototype visuals completed |
-| Remaining survey measures | In development |
-| Final dashboard design and navigation | Planned after the measure prototypes are complete |
+| **Power Query and data preparation** | Prepared one year first and used it as a repeatable transformation template for the remaining years, reshaping the published wide tables into one combined table covering 2021 to 2024. |
+| **Reusable query design** | Used a repeatable Staging → Base → Results → Validation structure, then adapted it for different survey questions and annual source tables. |
+| **Data modelling** | Built shared business group and year dimensions so that the same selections could filter multiple subject areas consistently. |
+| **DAX** | Created percentage point balances, latest year comparisons, dynamic KPI text, selected group context and conditional formatting measures. |
+| **Data validation** | Compared transformed results with the published Excel tables and created validation queries to check outcome counts, survey bases and percentage totals. |
+| **Report and UX design** | Designed overview and detailed analysis pages, consistent navigation, hierarchical filtering and plain language explanations of the calculations. |
+| **Survey interpretation** | Retained weighted results and respondent bases while making the limitations of aggregated survey data visible to the user. |
+
+## What users can explore
+
+- Follow changes in business performance, employment and major obstacles between 2021 and 2024.
+- Move from the UK total to individual nations, business sizes or sectors using a shared hierarchical selector.
+- Separate what businesses reported over the previous 12 months from what they expected over the following 12 months.
+- View the response shares behind percentage point balances rather than relying only on headline KPIs.
+- Rank the obstacles reported by a selected business group and follow an individual obstacle over time.
+- Compare how nations, business sizes or sectors responded to the same survey question.
+
+## Dashboard pages
+
+### Business performance
+
+#### Business Performance overview
+
+The opening page brings together three separate survey questions: reported turnover, expected turnover and profitability. Dynamic KPIs, conditional colours and trend visuals update with the selected business group, giving the user a quick view of the latest position before they move into the detailed analysis.
+
+#### Turnover: the trend behind the headline
+
+![Detailed turnover page comparing reported and expected balances with their underlying response shares](documentation/images/dashboard-pages/turnover-trend-detail.png)
+
+This page compares reported and expected turnover balances across the four survey years. The supporting charts show the increase and decrease shares behind each balance, making the percentage point calculation visible rather than presenting it as an unexplained headline figure.
+
+### Employment
+
+#### Employment Trends and Outlook
+
+![Employment overview separating reported workforce change from expectations for the following 12 months](documentation/images/dashboard-pages/employment-overview.png)
+
+This overview deliberately separates recent employment changes from expectations for the following 12 months. It combines trend measures, a latest year outlook and the distribution of expected responses while keeping the selected business group visible throughout the page.
+
+#### Reported Employment Change
+
+![Detailed employment page comparing reported and expected balances and response distributions](documentation/images/dashboard-pages/employment-response-detail.png)
+
+The detailed page allows the user to compare reported and expected employment balances across the available years and inspect the individual Increased, Stable and Decreased response shares. This helps show the difference between business sentiment and the outcomes subsequently reported.
+
+### Major obstacles
+
+#### Major obstacles: rankings and trends
+
+![Major obstacles page combining annual rankings with a selected obstacle trend](documentation/images/dashboard-pages/major-obstacles-rankings-trends.png)
+
+This page ranks the obstacles reported by a selected business group for a chosen year and follows one selected obstacle across 2021-2024. Dynamic cards highlight the most reported and fastest rising obstacles, while year buttons and an obstacle selector support further exploration.
+
+#### Compare Business Groups
+
+![Comparison page ranking business groups for a selected year and obstacle](documentation/images/dashboard-pages/compare-business-groups.png)
+
+The comparison page lets the user choose a year, obstacle and comparison type before ranking nations, business sizes or sectors. The highest and lowest reported groups are summarised above the chart so that the main result can be understood quickly.
+
+### About this survey
+
+The report also contains an information page explaining the survey source, collection method, weighting, percentage point calculations, respondent bases and interpretation limits. It links back to the official reports and methodology so that users can move from the dashboard to the published evidence.
+
+## Data preparation and validation
+
+Near the end of each year, the results from the Small Business Survey are published on GOV.UK. Each year is split into two sections: businesses with employees and businesses without employees. Within each section are four Excel workbooks. The first is the main workbook, containing the core questions answered by everyone who participated, while the other three are cohort workbooks containing survey questions that were only presented to some respondents selected at random. This helped avoid burdening respondents with too many questions, as the interview already took over 20 minutes to complete using only the core questions.
+
+For each year, I downloaded the core Excel workbook labelled “data” and the Cohort B workbook, as this contained the survey questions for Major Obstacles. This was the topic I found people to be most engaged by, which is why I chose to include Major Obstacles as a section in my own report. The workbook labelled “data” contained the rest of the measures required for the Business Performance and Employment sections.
+
+The published tables were arranged in a wide format, with survey responses in rows and UK, nation, business size and sector results across separate columns. Although this format was useful for reading the published results in Excel, it required reshaping before it could support interactive Power BI filters and comparisons.
+
+I prepared one year first and used it as a repeatable transformation template for the remaining years. In Power Query, I filtered for the required survey table, expanded the nested data, removed unused columns and unpivoted the business breakdown columns. I then standardised the business breakdowns and published responses, separated the percentage results from the weighted and unweighted bases, and created validation queries before appending the annual results into one combined table. Selected results from each year were also checked against the original Excel workbooks. The full process is shown in the [Employment Change methodology](documentation/employment-change-methodology.md), which provides the most comprehensive example of these steps.
+
+## Data interpretation
+
+The dashboard uses published, pre-aggregated and weighted survey responses rather than respondent level records. A methodology document is available to download for each year, explaining how the data was prepared and weighted. For example, here is the [2025 technical report](https://assets.publishing.service.gov.uk/media/6abfc6b9c9bd185c481ec977/lsbs_2025_technical_report.ods).
+
+The 2025 methodology states that the individual survey responses were grouped into 336 separate groups, described as “sector within size band within nation”. These same categories appear throughout the published tables and informed how I organised the data into Breakdown Type and Breakdown Value. However, I did not recreate the weighting process myself, as I used the already weighted figures published by the government.
+
+For each group, the researchers compared its share of the total survey interviews with its estimated share of the wider business population, using the Business Population Estimates released yearly by the government. As a simplified example, if medium sized businesses represented 1% of the survey interviews but the BPE estimated that they represented 3% of the business population, respondents in that group would be given more influence in the results, by weighting the Business Groups.
+
+The published data included two rows: the unweighted base and the weighted base. The unweighted base reports how many businesses answered the question, and the weighted base represents the population base after weighting. The weighted base is not to be understood as additional interviews.
+
+This means the unweighted base is still important. A weighted figure may represent a large number of businesses, but if the unweighted base is small, the result is based on fewer actual interviews and should be interpreted with more caution. I included this warning on the About This Survey page to make it clear to users.
+
+Overall, this dashboard’s purpose is to present the findings published by the government in a more accessible format. It is not intended to establish why a change happened or replace the official reports.
+
+## Tools used
+
+- Power BI Desktop
+- Power Query and M
+- DAX
+- Microsoft Excel
+- Git and GitHub
 
 ## Methodology and project evidence
 
-The detailed development logs contain the Power Query steps, validation evidence, DAX measures and screenshots produced while building each part of the dashboard:
+- [Business Performance methodology](documentation/business-performance-methodology.md)
+- [Employment Change methodology](documentation/employment-change-methodology.md)
+- [Employment Expectations methodology](documentation/employment-outlook-methodology.md)
+- [Major Obstacles methodology](documentation/major-obstacles-methodology.md)
 
-- [Employment Outcomes methodology](/documentation/employment-outcomes-methodology.md)
-- [Employment Expectations methodology](/documentation/employment-outlook-methodology.md)
-- [Major Obstacles methodology](/documentation/major-obstacles-methodology.md)
+These documents contain the detailed Power Query steps, validation evidence, DAX examples and design decisions behind each part of the report. The README is intended to remain a shorter overview that can be scanned quickly.
 
-The main README will remain a shorter overview of the project. The methodology documents provide a more detailed record for anyone interested in how the annual tables were prepared and how the Power BI measures and visuals were developed.
+## Data source
+
+The project uses the published SME employer tables available through the UK Government's [Small Business Survey reports collection](https://www.gov.uk/government/collections/small-business-survey-reports), including the [2024 businesses with employees publication and downloadable data](https://www.gov.uk/government/statistics/small-business-survey-2024-businesses-with-employees).
+
