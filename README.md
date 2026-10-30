@@ -30,7 +30,7 @@ One frustration I heard a lot was that they felt nothing was ever done with the 
 
 As my first portfolio project, it made sense to choose this subject, not only because I have direct experience collecting data for the survey, but also because the published data is presented in a more challenging format. It is pre aggregated, weighted and presented in a semi structured, wide format, so it would put me to the test and help me learn more skills.
 
-I chose the 2021 to 2024 data because the results were presented in the most similar format, making the process repeatable. This project allowed me to put what I had been learning through Power BI courses into something real, demonstrating my capability and willingness to learn and adapt.
+I chose the 2021 to 2024 data since the results were presented in a similar format, making the process repeatable. Completing this project allowed me to put what I had been learning through Power BI courses into something real, demonstrating my capability and willingness to learn and adapt.
 
 ## What this project demonstrates
 
