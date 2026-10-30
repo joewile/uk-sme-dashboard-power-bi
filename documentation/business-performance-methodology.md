@@ -17,6 +17,8 @@ Both pages use a hierarchical slicer based on two columns from a shared dimensio
 This allows the user to view the UK total, which is the default selection, or switch to a more focused selection that is relevant to them. The selected business-group filter is applied across the whole page, including its KPIs and visualisations.
 To provide context, the current selection is also displayed beneath the subtitle using dynamic text. This ensures that the selected group remains clearly identified if a screenshot of the page is taken. On the overview page, the summary banner beneath this provides a plain-language reading of the results.
 ### Page 1 – Business Performance overview
+<img width="2004" height="1156" alt="02_Performance_Overview" src="https://github.com/user-attachments/assets/dee9e241-a2f5-4054-bd99-17bd23008ba4" />
+
 #### Page layout
 The page is divided into three sections, each visually distinguished by a surrounding white background. The top section is designed to guide the reader’s eye from left to right, moving from Reported Turnover to Expected Turnover, before continuing downwards to Profitability. This was inspired by the Z-shaped scanning pattern used in visual design.
 #### Section 1 – Reported Turnover
@@ -38,6 +40,7 @@ The middle visual uses a stacked bar chart to show the distribution of survey re
 Finally, the line chart shows the percentage of businesses reporting a profit or surplus in each survey year. This allows the user to identify the overall direction and pattern of reported profitability between 2021 and 2024.
 
 ### Page 2 – Turnover: the trend behind the headline
+<img width="1986" height="1140" alt="02_Performance_Detailed_" src="https://github.com/user-attachments/assets/10844f96-949c-4a1d-a81b-1ee6d1baeaea" />
 
 #### Purpose and filtering
 The Detailed Analysis page’s intention is to allow users to explore the reported and expected turnover measures in more depth, providing a clearer understanding of trends and the data behind the percentage-point balances for each year of the selected group.
