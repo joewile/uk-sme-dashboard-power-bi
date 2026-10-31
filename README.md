@@ -2,7 +2,7 @@
 
 An independent Power BI portfolio project combining my experience collecting Small Business Survey data with the transformation and visualisation of published survey findings.
 
-![Business Performance overview showing reported turnover, expected turnover and profitability](documentation/images/dashboard-pages/business-performance-overview.png)
+<img width="4698" height="1812" alt="Page Collage" src="https://github.com/user-attachments/assets/9af1f4e1-1c22-4978-b7a8-42309167956c" />
 
 ## Contents
 
@@ -63,6 +63,8 @@ The sidebar on the left separates the three sections: Business Performance, Empl
 
 #### Business Performance overview
 
+<img width="2004" height="1156" alt="02_Performance_Overview" src="https://github.com/user-attachments/assets/88c4344e-f5d0-41d1-821f-022bf9769d74" />
+
 The Business Performance Overview page uses 3 separate survey measures from 3 separate survey questions: reported turnover, expected turnover and profitability. The aim of this page is to bring a quick understanding of the most recent year’s reported turnover balance, expected turnover balance and profitability result. 
 
 It makes use of plain worded KPIs that use conditional formatting and DAX measures to update according to the Business Group slicer, so users may quickly explore areas of interest without it becoming too analytical. 
@@ -73,7 +75,7 @@ It is aimed at the average director or senior leader who has less time and requi
 
 #### Turnover: the trend behind the headline
 
-![Detailed turnover page comparing reported and expected balances with their underlying response shares](documentation/images/dashboard-pages/turnover-trend-detail.png)
+<img width="1986" height="1140" alt="03_Performance_Detailed_" src="https://github.com/user-attachments/assets/01c3ae94-f926-427e-b36a-640e07164989" />
 
 The Detailed Analysis page focuses on turnover, specifically the direct comparison between reported turnover on the left and expected turnover on the right. This comparison highlights the difference between what businesses expected their turnover to do over the following 12 months and what businesses reported in the next survey year, often showing more positive expectations. 
 
@@ -87,7 +89,7 @@ The page also makes use of plain worded KPIs and DAX measures to update accordin
 
 #### Employment Trends and Outlook
 
-![Employment overview separating reported workforce change from expectations for the following 12 months](documentation/images/dashboard-pages/employment-overview.png)
+<img width="1562" height="888" alt="image" src="https://github.com/user-attachments/assets/d6087065-ea43-4357-9247-26093f604e09" />
 
 The Employment Trends and Outlook page is intended to be easily understood at a glance. It provides plain worded KPIs that use DAX measures to update according to the business selection.
 
@@ -99,9 +101,10 @@ Overall, this page is aimed to be a quick read and an introduction to the Detail
 
 **Methodologies:** [Employment Change methodology](documentation/employment-change-methodology.md) and [Employment Expectations methodology](documentation/employment-outlook-methodology.md)
 
-#### Reported Employment Change
+#### Employment: The detailed response
 
-![Detailed employment page comparing reported and expected balances and response distributions](documentation/images/dashboard-pages/employment-response-detail.png)
+<img width="1554" height="882" alt="image" src="https://github.com/user-attachments/assets/ee8dad0a-498f-47d0-8799-75ba4c7983e5" />
+
 The Employment Detailed Analysis page focuses on workforce changes, specifically the direct comparison between reported employment on the left and expected employment on the right. This comparison highlights the difference between what businesses expected their workforce to do over the following 12 months and what businesses reported in the next survey year, allowing users to see where expectations were more positive than reported outcomes.
 
 The top row visualisations show the increase and decrease response proportions for each of the four years. The visuals on the bottom row display the balance trend over the four years, using percentage points to measure the difference between the increase and decrease response shares. Together, these give the user a clear understanding of the responses behind each balance, as the percentage point calculation can remove this detail.
@@ -114,7 +117,7 @@ The page also makes use of plain worded KPIs and DAX measures that update accord
 
 #### Major obstacles: rankings and trends
 
-![Major obstacles page combining annual rankings with a selected obstacle trend](documentation/images/dashboard-pages/major-obstacles-rankings-trends.png)
+<img width="1566" height="884" alt="02_Major_Obstacles" src="https://github.com/user-attachments/assets/3da5c13b-590c-4dd0-afcc-7d5190d26a81" />
 
 The Major Obstacles Rankings and Trends page is divided into two sections, visually separated to reduce confusion. Both sides use the same Business Group slicer; however, the left side has an additional year filter. The left side focuses on the chosen year, displaying the ranking of major obstacles reported for that year and selected group. The idea is that the user may see how obstacles move up or down over time and understand what the biggest issue was at the time. For example, for the UK total in 2021, COVID-19 was reported to have been the largest obstacle, during a period when many companies took Bounce Back Loans to survive. By 2024, Taxation was the largest obstacle, increasing from 36% to 60%, a rise of 24 percentage points.
 
@@ -126,7 +129,7 @@ Both sections have a KPI above. The left displays the most reported obstacle for
 
 #### Compare Business Groups
 
-![Comparison page ranking business groups for a selected year and obstacle](documentation/images/dashboard-pages/compare-business-groups.png)
+<img width="1548" height="878" alt="03_Major Obstacles_KPIs_Added" src="https://github.com/user-attachments/assets/37bb664b-b6df-48b1-a836-5a3394554566" />
 
 Similar to the Rankings and Trends page, the Compare Business Groups page uses a ranked bar chart, but instead of ranking obstacles in the selected business group, it ranks business groups by their proportion reporting the selected obstacle. This allows users to understand which business groups reported the selected obstacle the most for the selected year.
 
