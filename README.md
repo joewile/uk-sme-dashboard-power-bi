@@ -69,6 +69,8 @@ It makes use of plain worded KPIs that use conditional formatting and DAX measur
 
 It is aimed at the average director or senior leader who has less time and requires quick, painless insights. It is the stepping stone to the second page, which is a deeper dive into reported vs expected turnover over the survey years.
 
+**Methodology:** [Business Performance methodology](documentation/business-performance-methodology.md)
+
 #### Turnover: the trend behind the headline
 
 ![Detailed turnover page comparing reported and expected balances with their underlying response shares](documentation/images/dashboard-pages/turnover-trend-detail.png)
@@ -78,6 +80,8 @@ The Detailed Analysis page focuses on turnover, specifically the direct comparis
 The top row visualisations display the balance trend over the four years, using percentage points to measure the difference between the increase and decrease response shares. The visuals on the bottom row show how each balance is calculated and give the user a clear understanding of the actual response proportions, as the percentage point calculation can remove this detail. 
 
 The page also makes use of plain worded KPIs and DAX measures to update according to the Business Group slicer, such as the selection heading that updates according to the slicer slection, allowing users to screenshot pages and keep the context clear.
+
+**Methodology:** [Business Performance methodology](documentation/business-performance-methodology.md)
 
 ### Employment
 
@@ -93,6 +97,8 @@ The right section is employment expectations, starting with a plain worded under
 
 Overall, this page is aimed to be a quick read and an introduction to the Detailed Analysis page, which uses a similar format to the Business Performance Detailed Analysis.
 
+**Methodologies:** [Employment Change methodology](documentation/employment-change-methodology.md) and [Employment Expectations methodology](documentation/employment-outlook-methodology.md)
+
 #### Reported Employment Change
 
 ![Detailed employment page comparing reported and expected balances and response distributions](documentation/images/dashboard-pages/employment-response-detail.png)
@@ -101,6 +107,8 @@ The Employment Detailed Analysis page focuses on workforce changes, specifically
 The top row visualisations show the increase and decrease response proportions for each of the four years. The visuals on the bottom row display the balance trend over the four years, using percentage points to measure the difference between the increase and decrease response shares. Together, these give the user a clear understanding of the responses behind each balance, as the percentage point calculation can remove this detail.
 
 The page also makes use of plain worded KPIs and DAX measures that update according to the Business Group slicer, such as the selection heading that updates according to the slicer selection, allowing users to screenshot pages and keep the context clear.
+
+**Methodologies:** [Employment Change methodology](documentation/employment-change-methodology.md) and [Employment Expectations methodology](documentation/employment-outlook-methodology.md)
 
 ### Major obstacles
 
@@ -114,6 +122,8 @@ This is my favourite visual, as it tracks what small businesses are feeling and 
 
 Both sections have a KPI above. The left displays the most reported obstacle for the selected year, while the right displays the fastest-rising obstacle for the selected group. This is worked out using a complex DAX measure created with the help of AI, which calculates each major obstacle’s positive difference from 2021 to 2024, then selects the maximum for the group. It displays the percentage point increase from 2021 to 2024 and the title of the obstacle, which turned out to be Taxation for the UK total.
 
+**Methodology:** [Major Obstacles methodology](documentation/major-obstacles-methodology.md)
+
 #### Compare Business Groups
 
 ![Comparison page ranking business groups for a selected year and obstacle](documentation/images/dashboard-pages/compare-business-groups.png)
@@ -124,6 +134,8 @@ In the top right, there is a Comparison Setup box containing 3 slicers. The firs
 
 For example, if I were to select Sector, 2021 and COVID-19, I would be presented with the ranking and find that the Accommodation and Food industry reported the highest percentage, with 88% of respondents in that group listing COVID-19 as a major obstacle. This can be understood given how much this industry suffered during COVID-19.
 
+**Methodology:** [Major Obstacles methodology](documentation/major-obstacles-methodology.md)
+
 ### About this survey
 
 The About This Survey page is a static information page. It helps users understand the data, where it comes from, how it was collected and how it should be interpreted before taking the results as literal survey responses rather than weighted ones from the published reports.
@@ -131,6 +143,8 @@ The About This Survey page is a static information page. It helps users understa
 The information is separated into 6 equally sized boxes covering what the survey is, how the responses were collected, how the data is weighted, how the published tables were prepared for the report, what certain calculations mean and how to interpret the findings.
 
 The page’s main aim is to explain how the dashboard uses published, weighted and pre-aggregated survey results rather than individual responses, presenting links to the published reports and the most recent methodology so users can understand the source if they would like to.
+
+**Official methodology:** [2025 Small Business Survey technical report](https://assets.publishing.service.gov.uk/media/6abfc6b9c9bd185c481ec977/lsbs_2025_technical_report.ods)
 
 ## Data preparation and validation
 
