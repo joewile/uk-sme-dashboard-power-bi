@@ -141,6 +141,8 @@ For example, if I were to select Sector, 2021 and COVID-19, I would be presented
 
 ### About this survey
 
+<img width="1916" height="1076" alt="image" src="https://github.com/user-attachments/assets/573a4cc7-fc48-4769-b1ad-e7d3ba80f636" />
+
 The About This Survey page is a static information page. It helps users understand the data, where it comes from, how it was collected and how it should be interpreted before taking the results as literal survey responses rather than weighted ones from the published reports.
 
 The information is separated into 6 equally sized boxes covering what the survey is, how the responses were collected, how the data is weighted, how the published tables were prepared for the report, what certain calculations mean and how to interpret the findings.
