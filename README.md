@@ -126,7 +126,11 @@ For example, if I were to select Sector, 2021 and COVID-19, I would be presented
 
 ### About this survey
 
-The report also contains an information page explaining the survey source, collection method, weighting, percentage point calculations, respondent bases and interpretation limits. It links back to the official reports and methodology so that users can move from the dashboard to the published evidence.
+The About This Survey page is a static information page. It helps users understand the data, where it comes from, how it was collected and how it should be interpreted before taking the results as literal survey responses rather than weighted ones from the published reports.
+
+The information is separated into 6 equally sized boxes covering what the survey is, how the responses were collected, how the data is weighted, how the published tables were prepared for the report, what certain calculations mean and how to interpret the findings.
+
+The page’s main aim is to explain how the dashboard uses published, weighted and pre-aggregated survey results rather than individual responses, presenting links to the published reports and the most recent methodology so users can understand the source if they would like to.
 
 ## Data preparation and validation
 
