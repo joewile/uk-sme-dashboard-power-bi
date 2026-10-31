@@ -55,18 +55,29 @@ I chose the 2021 to 2024 data since the results were presented in a similar form
 - Track the reported percentage of a specific major obstacle over time and compare it across nations, business sizes or sectors.
   
 ## Dashboard pages
+All the pages use a standardised format, a static title and subtitle with dynamic headings that display the business group selection according to the slicer selection, ensuring context is always shown, with a static text box below displaying the source of the data and a caution that low unweighted bases can cause less reliable results.
+
+The sidebar on the left separates the three sections: Business Performance, Employment and Major Obstacles. Under each section, are the two corresponding pages. Hovering over a page selection will cause the button to go light purple, clicking makes it go purple, this makes the sidebar navigation feel responsive and clean. At the bottom is the About this survey page, which takes the user to a static page with information about the data and how it should be interpreted.
 
 ### Business performance
 
 #### Business Performance overview
 
-The opening page brings together three separate survey questions: reported turnover, expected turnover and profitability. Dynamic KPIs, conditional colours and trend visuals update with the selected business group, giving the user a quick view of the latest position before they move into the detailed analysis.
+The Business Performance Overview page uses 3 separate survey measures from 3 separate survey questions: reported turnover, expected turnover and profitability. The aim of this page is to bring a quick understanding of the most recent year’s reported turnover balance, expected turnover balance and profitability result. 
+
+It makes use of plain worded KPIs that use conditional formatting and DAX measures to update according to the Business Group slicer, so users may quickly explore areas of interest without it becoming too analytical. 
+
+It is aimed at the average director or senior leader who has less time and requires quick, painless insights. It is the stepping stone to the second page, which is a deeper dive into reported vs expected turnover over the survey years.
 
 #### Turnover: the trend behind the headline
 
 ![Detailed turnover page comparing reported and expected balances with their underlying response shares](documentation/images/dashboard-pages/turnover-trend-detail.png)
 
-This page compares reported and expected turnover balances across the four survey years. The supporting charts show the increase and decrease shares behind each balance, making the percentage point calculation visible rather than presenting it as an unexplained headline figure.
+The Detailed Analysis page focuses on turnover, specifically the direct comparison between reported turnover on the left and expected turnover on the right. This comparison highlights the difference between what businesses expected their turnover to do over the following 12 months and what businesses reported in the next survey year, often showing more positive expectations. 
+
+The top row visualisations display the balance trend over the four years, using percentage points to measure the difference between the increase and decrease response shares. The visuals on the bottom row show how each balance is calculated and give the user a clear understanding of the actual response proportions, as the percentage point calculation can remove this detail. 
+
+The page also makes use of plain worded KPIs and DAX measures to update according to the Business Group slicer, such as the selection heading that updates according to the slicer slection, allowing users to screenshot pages and keep the context clear.
 
 ### Employment
 
@@ -74,13 +85,22 @@ This page compares reported and expected turnover balances across the four surve
 
 ![Employment overview separating reported workforce change from expectations for the following 12 months](documentation/images/dashboard-pages/employment-overview.png)
 
-This overview deliberately separates recent employment changes from expectations for the following 12 months. It combines trend measures, a latest year outlook and the distribution of expected responses while keeping the selected business group visible throughout the page.
+The Employment Trends and Outlook page is intended to be easily understood at a glance. It provides plain worded KPIs that use DAX measures to update according to the business selection.
+
+The left side is the reported employment section, first displaying a plain worded KPI with a breakdown of its calculation below, and secondly displaying a column chart that uses percentage point balances to identify the balance between reported increases vs reported decreases, aimed to help the user understand the trend of survey responses over the four years included. Together, the two sections within reported employment first help the user to understand percentage point calculations before moving onto the wider trend.
+
+The right section is employment expectations, starting with a plain worded understanding of the dominant response backed by data, then the distribution of responses in the selected group, and lastly the percentage point calculation between increases vs decreases reported. Combining these gives an informative understanding of the latest year’s employment expectations without using past years that may not be relevant to the reader.
+
+Overall, this page is aimed to be a quick read and an introduction to the Detailed Analysis page, which uses a similar format to the Business Performance Detailed Analysis.
 
 #### Reported Employment Change
 
 ![Detailed employment page comparing reported and expected balances and response distributions](documentation/images/dashboard-pages/employment-response-detail.png)
+The Employment Detailed Analysis page focuses on workforce changes, specifically the direct comparison between reported employment on the left and expected employment on the right. This comparison highlights the difference between what businesses expected their workforce to do over the following 12 months and what businesses reported in the next survey year, allowing users to see where expectations were more positive than reported outcomes.
 
-The detailed page allows the user to compare reported and expected employment balances across the available years and inspect the individual Increased, Stable and Decreased response shares. This helps show the difference between business sentiment and the outcomes subsequently reported.
+The top row visualisations show the increase and decrease response proportions for each of the four years. The visuals on the bottom row display the balance trend over the four years, using percentage points to measure the difference between the increase and decrease response shares. Together, these give the user a clear understanding of the responses behind each balance, as the percentage point calculation can remove this detail.
+
+The page also makes use of plain worded KPIs and DAX measures that update according to the Business Group slicer, such as the selection heading that updates according to the slicer selection, allowing users to screenshot pages and keep the context clear.
 
 ### Major obstacles
 
@@ -88,13 +108,21 @@ The detailed page allows the user to compare reported and expected employment ba
 
 ![Major obstacles page combining annual rankings with a selected obstacle trend](documentation/images/dashboard-pages/major-obstacles-rankings-trends.png)
 
-This page ranks the obstacles reported by a selected business group for a chosen year and follows one selected obstacle across 2021-2024. Dynamic cards highlight the most reported and fastest rising obstacles, while year buttons and an obstacle selector support further exploration.
+The Major Obstacles Rankings and Trends page is divided into two sections, visually separated to reduce confusion. Both sides use the same Business Group slicer; however, the left side has an additional year filter. The left side focuses on the chosen year, displaying the ranking of major obstacles reported for that year and selected group. The idea is that the user may see how obstacles move up or down over time and understand what the biggest issue was at the time. For example, for the UK total in 2021, COVID-19 was reported to have been the largest obstacle, during a period when many companies took Bounce Back Loans to survive. By 2024, Taxation was the largest obstacle, increasing from 36% to 60%, a rise of 24 percentage points.
+
+This is my favourite visual, as it tracks what small businesses are feeling and directly expressing as their issues, allowing people to understand how this sentiment changes over time. The right side focuses on the trend of a specific major obstacle over the four years. I wanted users to read the left side, decide what they were curious about, move to the right and select the obstacle they were interested in to see how the sentiment changed over time.
+
+Both sections have a KPI above. The left displays the most reported obstacle for the selected year, while the right displays the fastest-rising obstacle for the selected group. This is worked out using a complex DAX measure created with the help of AI, which calculates each major obstacle’s positive difference from 2021 to 2024, then selects the maximum for the group. It displays the percentage point increase from 2021 to 2024 and the title of the obstacle, which turned out to be Taxation for the UK total.
 
 #### Compare Business Groups
 
 ![Comparison page ranking business groups for a selected year and obstacle](documentation/images/dashboard-pages/compare-business-groups.png)
 
-The comparison page lets the user choose a year, obstacle and comparison type before ranking nations, business sizes or sectors. The highest and lowest reported groups are summarised above the chart so that the main result can be understood quickly.
+Similar to the Rankings and Trends page, the Compare Business Groups page uses a ranked bar chart, but instead of ranking obstacles in the selected business group, it ranks business groups by their proportion reporting the selected obstacle. This allows users to understand which business groups reported the selected obstacle the most for the selected year.
+
+In the top right, there is a Comparison Setup box containing 3 slicers. The first is the Breakdown Type whose subcategories you would like to compare, followed by the year you would like to focus on and, finally, the obstacle you would like to rank by. Above the chart are two KPIs that update with these selections, displaying the business groups that reported the selected obstacle the most and least. This gives the user a quick understanding before looking through the full ranking.
+
+For example, if I were to select Sector, 2021 and COVID-19, I would be presented with the ranking and find that the Accommodation and Food industry reported the highest percentage, with 88% of respondents in that group listing COVID-19 as a major obstacle. This can be understood given how much this industry suffered during COVID-19.
 
 ### About this survey
 
