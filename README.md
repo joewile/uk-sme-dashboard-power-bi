@@ -1,4 +1,4 @@
-# SME Insights - Power BI Dashboard
+# Small Business Survey Dashboard - Power BI Dashboard
 
 An independent Power BI portfolio project combining my experience collecting Small Business Survey data with the transformation and visualisation of published survey findings.
 
